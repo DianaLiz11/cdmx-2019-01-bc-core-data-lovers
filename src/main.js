@@ -80,11 +80,6 @@ if (ubication.includes('typePokemon.html')) {
 
 
 } else if (ubication.includes('orderPokemon.html')) {
-  /*const orderNameRadio = document.getElementById('asc-name');
-  orderNameRadio.addEventListener('click',()=>{
-    showList(window.sortData(dataPokemon,'name','asc'));
-  });*/
-
   //Buttons actions for order data
   const orderRadio = document.getElementsByName("order");
   const arrayRadio = Array.from(orderRadio);
