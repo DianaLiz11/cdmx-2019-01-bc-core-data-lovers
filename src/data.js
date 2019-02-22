@@ -17,27 +17,26 @@ window.data = {
     return concidence;
   },
 //Order data
-  sortData: (data,sortBy,sortOrder) => {
-    data.map(element => {
+  sortData: (dataPokemons,sortBy,sortOrder) => {
+    dataPokemons.map(element => {
        element.height = parseFloat(element.height);
        element.weight = parseFloat(element.weight);
      });
 
     if (sortOrder == 'asc') {
-      return data.sort((a, b) => (a[sortBy] > b[sortBy]) ? 1 : -1);
+      return dataPokemons.sort((a, b) => (a[sortBy] > b[sortBy]) ? 1 : -1);
     }
     else if (sortOrder == 'desc') {
-      return data.sort((a, b) => (a[sortBy] < b[sortBy]) ?  1 : -1);
+      return dataPokemons.sort((a, b) => (a[sortBy] < b[sortBy]) ?  1 : -1);
     } else {
-      return data;
+      return dataPokemons;
     }
-
   },
 //Show data values
-  computeStats: (data,valueItem) => {
+  computeStats: (dataPokemons,valueItem) => {
     let arrayCandys = [];
     let result = {};
-    data.forEach(element => {
+    dataPokemons.forEach(element => {
       if(element[valueItem] > 0){
         arrayCandys.push(element[valueItem])
       }
@@ -50,6 +49,5 @@ window.data = {
     result.maximum = Math.max.apply(null,arrayCandys);
 
     return result;
-
   }
 };
