@@ -135,7 +135,7 @@ const printChart = (feature, section, backColor, lineColor) => {
     }
   });
 
-  let chart = new Chart(section, {
+  new Chart(section, {
     type: 'line',
     data: {
       labels: arrayName,
@@ -148,10 +148,8 @@ const printChart = (feature, section, backColor, lineColor) => {
     },
     options: {}
   });
-
-  chart;
-
 }
+
 const principal = (ubicationPage) => {
   if (ubicationPage.includes('typePokemon.html')) {
     filterCoincidence();
