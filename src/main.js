@@ -50,10 +50,10 @@ const printPokemon = (pokemon) => {
           <th>Weight</th><td>${pokemon.weight}</td>
         </tr>
         <tr>
-          <th>Candy</th><td class="break-words">${pokemon.candy}</td>
+          <th>Candy</th><td>${pokemon.candy}</td>
         </tr>
         <tr>
-          <th>Egg</th><td class="break-words">${pokemon.egg}</td>
+          <th>Egg</th><td>${pokemon.egg}</td>
         </tr>
       </table>
       </div>

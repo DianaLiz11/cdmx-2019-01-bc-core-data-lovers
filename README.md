@@ -35,9 +35,9 @@ Cuando necesiten consultar información sobre los pokemons en especifico y saber
 
 ### Prototipo de alta fidelidad
 
-<a href="https://ibb.co/Fzs5dBY"><img src="https://i.ibb.co/PgTcV5W/home.png" alt="home" border="0"></a></br>
-<a href="https://ibb.co/gT07xSV"><img src="https://i.ibb.co/R0XSq3y/filter.png" alt="filter" border="0"></a></br>
-<a href="https://ibb.co/HCwmqdk"><img src="https://i.ibb.co/VxnXTmP/order.png" alt="order" border="0"></a>
+<a href="https://ibb.co/Fzs5dBY"><img src="https://i.ibb.co/qWDSL2b/pokemobile-1.png"  alt="home" border="0"></a></br>
+<a href="https://ibb.co/gT07xSV"><img src="https://i.ibb.co/NNhf1GK/pokemobile-2.png" alt="filter" border="0"></a></br>
+<a href="https://ibb.co/HCwmqdk"><img src="https://i.ibb.co/Hnp9b5G/pokemobile-3.png" alt="order" border="0"></a>
 
 
 ### Testeos de usabilidad
