@@ -19,6 +19,11 @@ const avgSpawn = document.getElementById('avg-spawn');
 const maxAvg = document.getElementById('max-avg');
 const minAvg = document.getElementById('min-avg');
 const avgAvg= document.getElementById('avg-avg');
+//chart
+let Chart = window.Chart;
+const chartCandy = document.getElementById('chart-candy');
+const chartSpawn = document.getElementById('chart-spawn');
+const chartAvg = document.getElementById('chart-avg');
 //obtain menu
 let menu = document.querySelector('#menu');
 let drawer = document.querySelector('nav');
@@ -120,6 +125,33 @@ const printStatsTable = () => {
   avgAvg.innerHTML = resultAvg.average;
 }
 
+const printChart = (feature, section, backColor, lineColor) => {
+  const arrayName = [];
+  const arrayValue = [];
+  JSON.parse(localStorage.dataPokemons).forEach(element => {
+    if (element[feature] > 0) {
+      arrayName.push(element.name);
+      arrayValue.push(element[feature]);
+    }
+  });
+
+  let chart = new Chart(section, {
+    type: 'line',
+    data: {
+      labels: arrayName,
+      datasets: [{
+        label: `${feature} by Pokemon`,
+        backgroundColor: backColor,
+        borderColor: lineColor,
+        data: arrayValue,
+      }]
+    },
+    options: {}
+  });
+
+  chart;
+
+}
 const principal = (ubicationPage) => {
   if (ubicationPage.includes('typePokemon.html')) {
     filterCoincidence();
@@ -129,68 +161,9 @@ const principal = (ubicationPage) => {
   } else if (ubicationPage.includes('statsPokemon.html')) {
     printStatsTable();
     //Graficos
-    let google = window.google;
-    google.charts.load('current', {
-      'packages': ['bar']
-    });
-
-    const drawChartCandy = () => {
-      const resultCandy = window.data.computeStats(JSON.parse(localStorage.dataPokemons), 'candy_count');
-      let data = google.visualization.arrayToDataTable([
-        ['feature', 'maximum', 'average', 'minimum'],
-        ['Candy count', resultCandy.maximum, resultCandy.average, resultCandy.minimum]
-      ]);
-
-      let options = {
-        chart: {
-          title: 'Candy Count',
-          subtitle: '151 pokemons',
-        }
-      };
-
-      let chart = new google.charts.Bar(document.getElementById('chart-candy'));
-      chart.draw(data, google.charts.Bar.convertOptions(options));
-    };
-
-    const drawChartSpawn = () => {
-      const resultSpawn = window.data.computeStats(JSON.parse(localStorage.dataPokemons), 'spawn_chance');
-      let data = google.visualization.arrayToDataTable([
-        ['feature', 'maximum', 'average', 'minimum'],
-        ['Spawn Chance', resultSpawn.maximum, resultSpawn.average, resultSpawn.minimum]
-      ]);
-
-      let options = {
-        chart: {
-          title: 'Spawn Chance',
-          subtitle: '151 pokemons',
-        }
-      };
-
-      let chart = new google.charts.Bar(document.getElementById('chart-spawn'));
-      chart.draw(data, google.charts.Bar.convertOptions(options));
-    };
-
-    const drawChartAvg = () => {
-      const resultAvg = window.data.computeStats(JSON.parse(localStorage.dataPokemons), 'avg_spawns');
-      let data = google.visualization.arrayToDataTable([
-        ['feature', 'maximum', 'average', 'minimum'],
-        ['Avg Spawns', resultAvg.maximum, resultAvg.average, resultAvg.minimum]
-      ]);
-
-      let options = {
-        chart: {
-          title: 'Avg Spawns',
-          subtitle: '151 pokemons',
-        }
-      };
-
-      let chart = new google.charts.Bar(document.getElementById('chart-avg'));
-      chart.draw(data, google.charts.Bar.convertOptions(options));
-    };
-
-    google.charts.setOnLoadCallback(drawChartCandy);
-    google.charts.setOnLoadCallback(drawChartSpawn);
-    google.charts.setOnLoadCallback(drawChartAvg);
+    printChart('candy_count',chartCandy,'rgb(110, 138, 210)','rgb(11, 66, 159)');
+    printChart('spawn_chance',chartSpawn,'rgb(218, 212, 162)','rgb(236, 193, 42)');
+    printChart('avg_spawns',chartAvg,'rgb(214, 103, 88)','rgb(236, 42, 42)');
   }
 };
 
@@ -207,9 +180,6 @@ menu.addEventListener('click', () => {
   drawer.classList.toggle('open');
   //Permite scroll
   document.getElementsByTagName("html")[0].style.overflow = "auto";
-  /*noscroll
-  document.getElementsByTagName("html")[0].style.overflow = "hidden";
-  e.stopPropagation();*/
 });
 
 outMenu.addEventListener('click', () => {
