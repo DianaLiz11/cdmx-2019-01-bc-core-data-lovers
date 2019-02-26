@@ -20,9 +20,10 @@ const maxAvg = document.getElementById('max-avg');
 const minAvg = document.getElementById('min-avg');
 const avgAvg= document.getElementById('avg-avg');
 //chart
-const chartCandy = document.getElementById('chart-candy').getContext('2d');
-const chartSpawn = document.getElementById('chart-spawn').getContext('2d');
-const chartAvg = document.getElementById('chart-avg').getContext('2d');
+let Chart = window.Chart;
+const chartCandy = document.getElementById('chart-candy');
+const chartSpawn = document.getElementById('chart-spawn');
+const chartAvg = document.getElementById('chart-avg');
 //obtain menu
 let menu = document.querySelector('#menu');
 let drawer = document.querySelector('nav');
@@ -147,8 +148,10 @@ const printChart = (feature, section, backColor, lineColor) => {
     },
     options: {}
   });
-}
 
+  chart;
+
+}
 const principal = (ubicationPage) => {
   if (ubicationPage.includes('typePokemon.html')) {
     filterCoincidence();
@@ -157,6 +160,7 @@ const principal = (ubicationPage) => {
     showList(window.data.showAllData(JSON.parse(localStorage.dataPokemons)));
   } else if (ubicationPage.includes('statsPokemon.html')) {
     printStatsTable();
+    //Graficos
     printChart('candy_count',chartCandy,'rgb(110, 138, 210)','rgb(11, 66, 159)');
     printChart('spawn_chance',chartSpawn,'rgb(218, 212, 162)','rgb(236, 193, 42)');
     printChart('avg_spawns',chartAvg,'rgb(214, 103, 88)','rgb(236, 42, 42)');
